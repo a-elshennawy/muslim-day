@@ -11,7 +11,7 @@ import { motion } from "motion/react";
 import { Link } from "react-router-dom";
 
 async function fetchAyat() {
-  const res = await fetch("/public/API/quran_en.json");
+  const res = await fetch("/API/quran_en.json");
   const data = await res.json();
   return data;
 }
