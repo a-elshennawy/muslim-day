@@ -3,6 +3,7 @@ import { BsFillCalendarDateFill } from "react-icons/bs";
 import { CiTempHigh } from "react-icons/ci";
 import { FaArrowsDownToLine, FaMapPin, FaWind } from "react-icons/fa6";
 import LoadingSpinner from "../reusableComponents/LoadingSpinner";
+import { Link } from "react-router-dom";
 
 export default function Home() {
   const [weatherData, setWeatherData] = useState(null);
@@ -152,6 +153,11 @@ export default function Home() {
 
   return (
     <>
+      <span className="toQuran">
+        <Link to={"/quran"}>
+          <img src="/img/icons8-quran-65.png" loading="lazy" />
+        </Link>
+      </span>
       <section className="weatherApp container-fluid row justify-content-center align-items-center text-center m-0">
         {/* City Search */}
         <div className="search-container col-12">

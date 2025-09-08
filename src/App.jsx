@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import LoadingSpinner from "./components/reusableComponents/LoadingSpinner";
 
 const Home = lazy(() => import("./components/pages/Home"));
+const Quran = lazy(() => import("./components/pages/Quran"));
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Suspense fallback={<LoadingSpinner />}>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/quran" element={<Quran />} />
           </Routes>
         </Suspense>
       </Router>
