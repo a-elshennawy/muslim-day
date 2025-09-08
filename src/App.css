@@ -7,7 +7,7 @@
 * {
   box-sizing: border-box;
   text-transform: capitalize !important;
-  font-weight: ubuntu, zain !important;
+  font-family: ubuntu, amiri !important;
 }
 
 body {
@@ -21,6 +21,15 @@ body {
 section {
   padding: 50px 0px;
   color: #fff;
+}
+
+.toQuran {
+  position: fixed;
+  top: 10%;
+  right: 0%;
+  transform: translate(-10%);
+  padding: 0;
+  z-index: 1111;
 }
 
 .weatherApp {
@@ -109,6 +118,70 @@ section {
         }
       }
     }
+  }
+}
+
+.homeBtn {
+  background-color: transparent;
+  border: none;
+  width: fit-content;
+  position: fixed;
+  top: 10px;
+  left: 15px;
+  z-index: 1111;
+
+  svg {
+    color: #fff;
+    font-size: 20px;
+  }
+}
+
+.quranCard {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -30%);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(3px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  padding: 20px 10px;
+
+  .ayahText {
+    padding: 10px;
+
+    h4 {
+      .verseNum {
+        padding: 10px 0px;
+      }
+    }
+  }
+
+  .actionsArea {
+    padding: 10px 0px;
+    button {
+      border: none;
+      margin: 0px 10px;
+      background-color: transparent;
+
+      svg {
+        color: #fff;
+        font-size: 20px;
+      }
+    }
+  }
+}
+
+.shareNotification {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(3px);
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  border-radius: 8px;
+  color: #fff;
+  padding: 10px 5px;
+
+  svg {
+    color: #13e700;
   }
 }
 
