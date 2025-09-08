@@ -1,14 +1,9 @@
 import { FaCopy } from "react-icons/fa";
-import {
-  IoCheckmarkCircleSharp,
-  IoHomeOutline,
-  IoRefreshOutline,
-} from "react-icons/io5";
+import { IoCheckmarkCircleSharp, IoRefreshOutline } from "react-icons/io5";
 import { MdGTranslate } from "react-icons/md";
 import { useState, use, Suspense, useEffect } from "react";
 import LoadingSpinner from "../reusableComponents/LoadingSpinner";
 import { motion } from "motion/react";
-import { Link } from "react-router-dom";
 
 async function fetchAyat() {
   const res = await fetch("/API/quran_en.json");
@@ -64,47 +59,40 @@ export default function Quran() {
   return (
     <>
       <Suspense fallback={<LoadingSpinner />}>
-        <button className="homeBtn">
-          <Link to={"/"}>
-            <IoHomeOutline />
-          </Link>
-        </button>
-        <section className="container-fluid row justify-content-center align-items-center m-0">
-          <div className="quranCard row justify-content-center align-items-center m-0 col-lg-5 col-11 text-center">
-            <div className="ayahText col-12">
-              {ayah ? (
-                showTranslation ? (
-                  <div>
-                    <h4 className="mb-1 mt-0">{ayah.verse.translation}</h4>
-                    <h5 className="mt-3 mb-0">
-                      Surat {ayah.surahTransliteration} - {ayah.verse.id}
-                    </h5>
-                  </div>
-                ) : (
-                  <div>
-                    <h4 className="mb-1 mt-0">{ayah.verse.text}</h4>
-                    <h5 className="mt-3 mb-0">
-                      سورة {ayah.surahName} - {ayah.verse.id}
-                    </h5>
-                  </div>
-                )
+        <div className="quranCard row justify-content-center align-items-center m-0 col-lg-5 col-11 text-center">
+          <div className="ayahText col-12">
+            {ayah ? (
+              showTranslation ? (
+                <div>
+                  <h4 className="mb-1 mt-0">{ayah.verse.translation}</h4>
+                  <h5 className="mt-3 mb-0">
+                    Surat {ayah.surahTransliteration} - {ayah.verse.id}
+                  </h5>
+                </div>
               ) : (
-                <h4>Loading...</h4>
-              )}
-            </div>
-            <div className="actionsArea col-12">
-              <button onClick={toggleLang}>
-                <MdGTranslate />
-              </button>
-              <button onClick={randomAyah}>
-                <IoRefreshOutline />
-              </button>
-              <button onClick={handleCopy}>
-                <FaCopy />
-              </button>
-            </div>
+                <div>
+                  <h4 className="mb-1 mt-0">{ayah.verse.text}</h4>
+                  <h5 className="mt-3 mb-0">
+                    سورة {ayah.surahName} - {ayah.verse.id}
+                  </h5>
+                </div>
+              )
+            ) : (
+              <h4>Loading...</h4>
+            )}
           </div>
-        </section>
+          <div className="actionsArea col-12">
+            <button onClick={toggleLang}>
+              <MdGTranslate />
+            </button>
+            <button onClick={randomAyah}>
+              <IoRefreshOutline />
+            </button>
+            <button onClick={handleCopy}>
+              <FaCopy />
+            </button>
+          </div>
+        </div>
 
         {showNotification && (
           <motion.div
@@ -114,12 +102,12 @@ export default function Quran() {
             transition={{ duration: 0.3, delay: 0.1 }}
             style={{
               position: "fixed",
-              top: "20px",
+              bottom: "20px",
               left: "50%",
               transform: "translateX(-50%)",
               zIndex: 1001,
             }}
-            className="shareNotification"
+            className="shareNotification col-5 col-lg-1"
           >
             {showTranslation ? "Ayah copied" : "تم نسخ الايه"}&nbsp;
             <IoCheckmarkCircleSharp />

@@ -23,45 +23,51 @@ section {
   color: #fff;
 }
 
-.toQuran {
-  position: fixed;
-  top: 10%;
-  right: 0%;
-  transform: translate(-10%);
-  padding: 0;
-  z-index: 1111;
-}
+.mainApp {
+  .quranCard {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(3px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    padding: 20px 10px;
 
-.weatherApp {
-  .search-container {
-    padding-bottom: 20px;
-    input {
-      border-radius: 8px;
-      padding: 5px;
+    .ayahText {
+      padding: 10px;
+
+      h4 {
+        .verseNum {
+          padding: 10px 0px;
+        }
+      }
     }
-  }
 
-  .current-weather {
-    padding: 10px 0px;
-    .weatherCard {
-      padding: 10px 5px;
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(5px);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      border-radius: 8px;
-      svg {
-        margin-inline-end: 5px;
+    .actionsArea {
+      padding: 10px 0px;
+      button {
+        border: none;
+        margin: 0px 10px;
+        background-color: transparent;
+
+        svg {
+          color: #fff;
+          font-size: 20px;
+        }
       }
     }
   }
 
-  .currTime {
+  .currentTime {
     padding: 10px 5px;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 10px;
-    width: fit-content;
+
+    h2 {
+      padding: 10px 5px;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(5px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 10px;
+      width: fit-content;
+      margin: auto;
+    }
 
     svg {
       font-size: 25px;
@@ -87,21 +93,6 @@ section {
     }
   }
 
-  .weather-forecast {
-    padding: 20px 0px;
-
-    .forecastItem {
-      padding: 10px 5px;
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(5px);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      border-radius: 8px;
-      svg {
-        margin-inline-end: 5px;
-      }
-    }
-  }
-
   .prayer-times {
     padding: 20px 0px;
 
@@ -116,57 +107,6 @@ section {
         img {
           margin-inline-end: 5px;
         }
-      }
-    }
-  }
-}
-
-.homeBtn {
-  background-color: transparent;
-  border: none;
-  width: fit-content;
-  position: fixed;
-  top: 10px;
-  left: 15px;
-  z-index: 1111;
-
-  svg {
-    color: #fff;
-    font-size: 20px;
-  }
-}
-
-.quranCard {
-  position: absolute;
-  top: 30%;
-  left: 50%;
-  transform: translate(-50%, -30%);
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(3px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 8px;
-  padding: 20px 10px;
-
-  .ayahText {
-    padding: 10px;
-
-    h4 {
-      .verseNum {
-        padding: 10px 0px;
-      }
-    }
-  }
-
-  .actionsArea {
-    padding: 10px 0px;
-    button {
-      border: none;
-      margin: 0px 10px;
-      background-color: transparent;
-
-      svg {
-        color: #fff;
-        font-size: 20px;
       }
     }
   }
