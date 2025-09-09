@@ -1,5 +1,5 @@
 {
-  "name": "daily-app",
+  "name": "muslim-day",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -11,7 +11,6 @@
   },
   "dependencies": {
     "bootstrap": "^5.3.8",
-    "motion": "^12.23.12",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-icons": "^5.5.0",
