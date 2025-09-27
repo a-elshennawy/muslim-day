@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from "@testing-library/react";
+import { cleanup, render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import Quran from "./Quran";
 import { expect, vi, beforeAll } from "vitest";
@@ -6,7 +6,15 @@ import { expect, vi, beforeAll } from "vitest";
 // Mock fetch
 global.fetch = vi.fn();
 
+// mock clipboard API for test 3
+Object.assign(navigator, {
+  clipboard: {
+    writeText: vi.fn(() => Promise.resolve()),
+  },
+});
+
 describe("quran component", () => {
+  // mock the response
   beforeAll(() => {
     global.fetch.mockResolvedValue({
       ok: true,
@@ -50,7 +58,12 @@ describe("quran component", () => {
     });
   });
 
-  test("assure when random btn click the quran verse changes", async () => {
+  // Clean up after each test
+  afterEach(() => {
+    cleanup();
+  });
+
+  test("assure verse changes", async () => {
     render(<Quran />);
 
     // Wait for component to finish loading
@@ -67,5 +80,42 @@ describe("quran component", () => {
     await waitFor(() => {
       expect(AyahText.textContent).not.toBe(initialText);
     });
+  });
+
+  test("assure translation appears", async () => {
+    render(<Quran />);
+
+    await waitFor(() => {
+      expect(screen.getByTestId("translationBtn")).toBeInTheDocument();
+    });
+
+    const translationBtn = screen.getByTestId("translationBtn");
+    await userEvent.click(translationBtn);
+
+    const translatedAyah = screen.getByTestId("translatedAyah");
+
+    await waitFor(() => {
+      expect(translatedAyah).toBeInTheDocument();
+    });
+  });
+
+  test("assure text is copied", async () => {
+    render(<Quran />);
+
+    await waitFor(() => {
+      expect(screen.getByTestId("copyBtn")).toBeInTheDocument();
+    });
+
+    const copyBtn = screen.getByTestId("copyBtn");
+    await userEvent.click(copyBtn);
+
+    const shareNotification = screen.getByTestId("shareNotification");
+
+    await waitFor(() => {
+      expect(shareNotification).toBeInTheDocument();
+    });
+
+    // assure clipboard copying text was done once
+    expect(navigator.clipboard.writeText).toHaveBeenCalledTimes(1);
   });
 });

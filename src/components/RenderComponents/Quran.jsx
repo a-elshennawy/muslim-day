@@ -126,6 +126,7 @@ export default function Quran() {
             zIndex: 1001,
           }}
           className="shareNotification col-5 col-lg-1"
+          data-testid="shareNotification"
         >
           {showTranslation ? "Ayah copied" : "تم نسخ الايه"}&nbsp;
           <IoCheckmarkCircleSharp />
